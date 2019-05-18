@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<!--1、 浮动
+			左栏左浮动,右栏右浮动,中间不设宽度margin撑开,值为左右宽度 
+			结构为:左  右  中
+				<div>left<div>
+				<div>right<div>
+				<div>center<div>
+		-->
+		<!--2、 绝对定位
+			左栏、右栏用绝对定位固定在左右两侧.中间不设宽度margin撑开,值为左右宽度 
+			结构为:左  中  右  
+				<div>left<div>
+				<div>center<div>
+				<div>right<div>	
+		-->
+		<!--3、 弹性盒布局
+			左、中、右三栏全部左浮动,父元素设置display:flex,中间栏flex:1
+			结构为:左  中  右  
+				<div>left<div>
+				<div>center<div>
+				<div>right<div>	
+		-->
+		<style type="text/css">
+			.box {
+				width: 700px;
+				height: 800px;
+				background: red;
+				display: flex;
+				flex-direction: row;
+				/* 设置主轴方向   row (默认为水平向右)
+								 column 垂直向下
+								 row-reverse  水平向左
+								 column-reverse  垂直向上
+				*/
+				flex-wrap: wrap;
+				/* 是否允许换行 wrap 允许  nowrap(默认不允许) */
+				justify-content: space-around;
+				/* 设置在主轴方向上的对齐方式:
+						flex-start (默认在主轴方向的起点位置对齐)
+						flex-end 在主轴方向的终点位置对齐
+						center 在中间位置对齐
+						space-between 将空白区域平分在子项目之间
+						space-around 将空白区域环绕在子项目两边
+				 */
+				/* align-items: center; */
+				/* 设置在侧轴方向的对齐方式(控制单行):
+						stretch (默认拉伸)
+						flex-start 子项目在所在行的起始位置摆放
+						center 中间位置摆放
+						flex-end 结束位置摆放
+						baseline 所在行以基线对齐
+				 */
+				align-content: space-around;
+				/* 设置在侧轴方向的对齐方式(控制多行)
+						flex-start (默认在侧轴方向的起点位置对齐)
+						flex-end 在侧轴方向的终点位置对齐
+						center 中间位置对齐
+						space-between 讲空白区域平分在子项目之间
+						space-around 讲空白区域环绕在子项目两边
+				 */
+			}
+
+			.box>div {
+				width: 200px;
+				height: 200px;
+				float: left;
+				border: 1px solid aqua;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+
+			<div class="left">1</div>
+			<div class="center">2</div>
+			<div class="right">3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+			<div>7</div>
+		</div>
+	</body>
+</html>

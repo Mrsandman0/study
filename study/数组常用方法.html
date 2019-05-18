@@ -18,45 +18,46 @@
 			// 	join():以参数作为分隔符，将所有数组成员组成一个字符串返回。如果不提供参数，默认用逗号分隔。
 			// 	concat():用于多个数组的合并。它将新数组的成员，添加到原数组的尾部，然后返回一个新数组，原数组不变
 			// 	reverse():用于颠倒数组中元素的顺序，返回改变后的数组。注意，该方法将改变原数组
-			// 	slice():用于截取原数组的一部分，返回一个新数组，原数组不变, slice(start,end)它的第一个参数为起始位置（从0开始），第二个参数为终止位置（但该位置的元素本身不包括在内）								。如果省略第二个参数，则一直返回到原数组的最后一个成员
-			// 	splice():删除原数组的一部分成员，并可以在被删除的位置添加入新的数组成员，返回值是被删除的元素。注意，该方法会改变原数组。splice(start,delNum,addElement1,addElement2								,...)第一个参数是删除的起始位置，第二个参数是被删除的元素个数。如果后面还有更多的参数，则表示这些就是要被插入数组的新元素。
+			// 	slice():用于截取原数组的一部分，返回一个新数组，原数组不变, slice(start,end)它的第一个参数为起始位置（从0开始），第二个参数为终止位置（但该位置的元素本身不包括在内）。如果省略第二个参数，则一直返回到原数组的最后一个成员
+			// 	splice():删除原数组的一部分成员，并可以在被删除的位置添加入新的数组成员，返回值是被删除的元素。注意，该方法会改变原数组。splice(start,delNum,addElement1,addElement2	,...)第一个参数是删除的起始位置，第二个参数是被删除的元素个数。如果后面还有更多的参数，则表示这些就是要被插入数组的新元素。
 			// 	sort():对数组成员进行排序，默认是按照字典顺序排序。排序后，原数组将被改变
 			// 	map():对数组的所有成员依次调用一个函数，根据函数结果返回一个新数组。
 			// 	filter():参数是一个函数，所有数组成员依次执行该函数，返回结果为true的成员组成一个新数组返回。该方法不会改变原数组
-			
+
 			// 1/数组去重的常用方法
-				var arr=[1, 2, 3, NaN, NaN,'NaN', '1', '2', 2, 3, '3',undefined,'undefined'];
-				var arr2=[];
-				console.log(Array.from(new Set(arr)))  //ES6  Set去重
-				
-				//此方法不能去除NaN
-				for(var i=0;i<arr.length;i++){
-					for(var j=i+1;j<arr.length;j++){
-						if(arr[i]===arr[j]) {
-							arr.splice(j,1);
-							j--;
-						}
+			var arr = [1, 2, 3, NaN, NaN, 'NaN', '1', '2', 2, 3, '3', undefined, 'undefined'];
+			var arr2 = [];
+			console.log(Array.from(new Set(arr))) //ES6  Set去重
+
+
+			//此方法不能去除NaN
+			for (var i = 0; i < arr.length; i++) {
+				if (arr2.indexOf(arr[i]) < 0) arr2.push(arr[i])
+			}
+			console.log(arr2);
+
+			//hash去重
+			var temp = {};
+			var arr3 = [];
+			for (var i = 0; i < arr.length; i++) {
+				var str = Object.prototype.toString.call(arr[i]);
+				if (!temp[str + arr[i]]) {
+					temp[str + arr[i]] = '123'; //其中这里的"123"可以是任意值,只要不为假值就行
+					arr3.push(arr[i]);
+				}
+			}
+			console.log(arr3);
+			
+			//此方法不能去除NaN  需要判断 typeof arr[i] === "number" && isNaN(arr[i]) && typeof arr[j] === "number" && isNaN(arr[j]) 
+			for (var i = 0; i < arr.length; i++) {
+				for (var j = i + 1; j < arr.length; j++) {
+					if (arr[i] === arr[j] || typeof arr[i] === "number" && isNaN(arr[i]) && typeof arr[j] === "number" && isNaN(arr[j])){
+						arr.splice(j, 1);
+						j--;
 					}
 				}
-				console.log(arr)
-				
-				//此方法不能去除NaN
-				for(var i=0;i<arr.length;i++){
-					if(arr2.indexOf(arr[i])<0) arr2.push(arr[i])
-				}
-				console.log(arr2);
-				
-				//hash去重
-				var temp = {};
-				var arr3 = [];
-				for (var i = 0; i < arr.length; i++) {
-					var str=Object.prototype.toString.call(arr[i]);
-				    if (!temp[str+arr[i]]) {
-				        temp[str+arr[i]] = '123'; //其中这里的"123"可以是任意值,只要不为假值就行
-				        arr3.push(arr[i]);
-				    }
-				}
-				console.log(arr3);
+			}
+			console.log(arr)
 		</script>
 	</body>
 </html>
