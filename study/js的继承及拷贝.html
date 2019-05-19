@@ -79,7 +79,7 @@
 			// 			console.log(son);
 			// 
 
-			//4、ES6中class继承: 关键词 extends  A继承B   A extends B{}
+			// 4、ES6中class继承: 关键词 extends  A继承B   A extends B{}
 			//					类里面的方法相当于ES5里面的原型上的方法
 			//					constructor里面的属性相当于ES5构造函数里面的属性
 			//					super('父类里要传的参数') 相当于 Father.call(this,'父类里要传的参数'),必须放在constructor里面的第一行
@@ -87,27 +87,64 @@
 			//             - 静态方法方法不会被实例继承，而是直接通过类来调用Son.fnSon()
 			//             - 父类的静态方法，可以被子类继承Son.fnFather()
 
-			class Father {
-				constructor(lastName) {
-					this.lastName = lastName;
-				}
-				static fnFather() {
-					console.log('老子的方法');
-				}
-			}
-			class Son extends Father {
-				constructor(firstName, lastName) {
-					super(lastName);
-					this.firstName = firstName;
-				}
-				fnSon() {
-					console.log('儿子的方法');
-				}
+			// 			class Father {
+			// 				constructor(lastName) {
+			// 					this.lastName = lastName;
+			// 				}
+			// 				static fnFather() {
+			// 					console.log('老子的方法');
+			// 				}
+			// 			}
+			// 			class Son extends Father {
+			// 				constructor(firstName, lastName) {
+			// 					super(lastName);
+			// 					this.firstName = firstName;
+			// 				}
+			// 				fnSon() {
+			// 					console.log('儿子的方法');
+			// 				}
+			// 			}
+			// 
+			// 			var son = new Son('八', '王');
+			// 			Son.fnFather();
+			// 			console.log(son);
+
+
+			//  深度拷贝 (递归)
+
+			var obj = {
+				a: 'Chinese',
+				b: 'math',
+				c: 'English',
+				d: ['html', 'css', 'java', 'JavaScript', 'vue', 'react'],
+				e: {
+					name: 'zzz',
+					age: '18',
+					sex: 'male',
+					hobby: ['抽烟', '喝酒', '赌博', ['小保健', '大保健']]
+				},
+				e:null
 			}
 
-			var son = new Son('八', '王');
-			Son.fnFather();
-			console.log(son);
+			function deepClone(origin, target) {
+				var target = target || {};
+				for (var keys in origin) {
+					if (origin.hasOwnProperty(keys)) {
+						if (typeof(origin.keys) === 'object') {
+							if (Object.toString.call(origin.keys) === "[object Array]") {
+								target[keys] = []
+							} else {
+								target[keys] = {}
+							}
+							deepClone(origin[keys], target[keys]);
+						} else {
+							target[keys] = origin[keys];
+						}
+					}
+				}
+				return target
+			}
+			console.log(deepClone(obj));
 		</script>
 	</body>
 </html>
