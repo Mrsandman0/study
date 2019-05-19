@@ -59,26 +59,25 @@
 
 			// 3、寄生组合式继承:创建空的构造函数F，将F.prototype指向父类的prototype，将子类的prototype指向F的实例
 
-			// 						function Father(lastName){
-			// 							this.lastName=lastName;
-			// 						}
-			// 						Father.prototype.fnFather=function(){
-			// 							console.log('爸爸的方法')
-			// 						}
-			// 						function Son(firstName,lastName){
-			// 							Father.call(this,lastName)
-			// 							this.firstName=firstName;
-			// 						}
-			// 						function F(){}
-			// 						F.prototype=Father.prototype;
-			// 						Son.prototype=new F();
-			// 						Son.prototype.fnSon=function(){
-			// 							console.log('儿子的方法');
-			// 						}
-			// 						var son=new Son('八','王');
-			// 						console.log(son);
-
-
+			// 			function Father(lastName){
+			// 				this.lastName=lastName;
+			// 			}
+			// 			Father.prototype.fnFather=function(){
+			// 				console.log('爸爸的方法')
+			// 			}
+			// 			function Son(firstName,lastName){
+			// 				Father.call(this,lastName)
+			// 				this.firstName=firstName;
+			// 			}
+			// 			function F(){}
+			// 			F.prototype=Father.prototype;
+			// 			Son.prototype=new F();
+			// 			Son.prototype.fnSon=function(){
+			// 				console.log('儿子的方法');
+			// 			}
+			// 			var son=new Son('八','王');
+			// 			console.log(son);
+			// 
 
 			//4、ES6中class继承: 关键词 extends  A继承B   A extends B{}
 			//					类里面的方法相当于ES5里面的原型上的方法
