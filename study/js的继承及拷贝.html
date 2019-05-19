@@ -55,8 +55,26 @@
 			// 			console.log(b);
 			// 			console.log(b.fnB());
 
-			// 3、寄生组合式继承
+			// 3、寄生组合式继承:创建空的构造函数F，将F.prototype指向父类的prototype，将子类的prototype指向F的实例
+			
+						function Father(lastName){
+							this.lastName=lastName;
+						}
+						Father.prototype.fnFather=function(){
+							console.log('爸爸的方法')
+						}
+						function Son(firstName,lastName){
+							Father.call(this,lastName)
+							this.firstName=firstName;
+						}
+						function F(){}
+						F.prototype=Father.prototype;
+						Son.prototype=new F();
+						Son.prototype.fnSon=function(){
+							console.log('儿子的方法');
+						}
+						var son=new Son('八','王');
+						console.log(son);
 		</script>
-		<div>123</div>
 	</body>
 </html>
