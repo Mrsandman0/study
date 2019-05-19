@@ -11,49 +11,52 @@
 			// 1、原型链继承:子类的原型对象指向父类的实例对象
 			//				缺点:无法直接在实例化子类的同时，给父类的属性赋值
 			//					想要在子类中添加新的属性或者方法必须要在 new A()之后(实例化父类之后)
-// 			function A(name) {
-// 				this.name = name;
-// 			}
-// 			A.prototype.fnA = function() {
-// 				console.log('我是A原型上的一个函数');
-// 			}
-// 
-// 			function B(age) {
-// 				this.age = age;
-// 			}
-// 			B.prototype = new A();
-// 			B.prototype.fnB = function() {
-// 				console.log('我是B原型上的一个函数');
-// 			}
-// 			var b = new B(13);
-// 			console.log(b);
-// 			console.log(b.fnA());
+			// 			function A(name) {
+			// 				this.name = name;
+			// 			}
+			// 			A.prototype.fnA = function() {
+			// 				console.log('我是A原型上的一个函数');
+			// 			}
+			// 
+			// 			function B(age) {
+			// 				this.age = age;
+			// 			}
+			// 			B.prototype = new A();
+			// 			B.prototype.fnB = function() {
+			// 				console.log('我是B原型上的一个函数');
+			// 			}
+			// 			var b = new B(13);
+			// 			console.log(b);
+			// 			console.log(b.fnA());
 
 
-			
+
 			// 2、组合式继承:将父类的构造函数拿到子类的构造函数中，改变this的指向为子类的实例，同时执行该函数,记得传参,
 			//      * 优点: 解决了子类拷贝了父类的所有属性
 			//		       可以实现多继承(call多个父类对象)
 			//      * 缺点：想要在子类中添加新的属性或者方法必须要在 new A()之后(实例化父类之后)
-			
-			function A(name) {
-				this.name = name;
-			}
-			A.prototype.fnA = function() {
-				console.log('我是A原型上的一个函数');
-			}
-			
-			function B(age,name) {
-				A.call(this,name)
-				this.age = age;
-			}
-			B.prototype = new A();
-			B.prototype.fnB = function() {
-				console.log('我是B原型上的一个函数');
-			}
-			var b = new B(13,'渣渣辉');
-			console.log(b);
-			console.log(b.fnB());
+
+			// 			function A(name) {
+			// 				this.name = name;
+			// 			}
+			// 			A.prototype.fnA = function() {
+			// 				console.log('我是A原型上的一个函数');
+			// 			}
+			// 			
+			// 			function B(age,name) {
+			// 				A.call(this,name)
+			// 				this.age = age;
+			// 			}
+			// 			B.prototype = new A();
+			// 			B.prototype.fnB = function() {
+			// 				console.log('我是B原型上的一个函数');
+			// 			}
+			// 			var b = new B(13,'渣渣辉');
+			// 			console.log(b);
+			// 			console.log(b.fnB());
+
+			// 3、寄生组合式继承
 		</script>
+		<div>123</div>
 	</body>
 </html>
