@@ -26,7 +26,8 @@
 
 			// 1/数组去重的常用方法
 			var arr = [1, 2, 3, NaN, NaN, 'NaN', '1', '2', 2, 3, '3', undefined, 'undefined'];
-			var arr2 = [];
+			var arr2 = [],arr4=[];
+			var map=new Map();
 			console.log(Array.from(new Set(arr))) //ES6  Set去重
 
 
@@ -58,6 +59,15 @@
 				}
 			}
 			console.log(arr)
+			
+			// ES6 Map去重
+			for (var i = 0; i < arr.length; i++) {
+				if (!map.get(arr[i])) {
+					map.set(arr[i],true);
+					arr4.push(arr[i]);
+				}
+			}
+			console.log(arr4);
 		</script>
 	</body>
 </html>
